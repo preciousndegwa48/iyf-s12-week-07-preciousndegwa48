@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+.container { max-width: 500px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 10px; }
+form { display: flex; gap: 10px; }
+input { flex: 1; padding: 10px; }
+button { padding: 10px 14px; cursor: pointer; }
+.filters { display: flex; gap: 8px; margin: 16px 0; }
+.filter-btn.active { background: #000; color: #fff; }
+li { display: flex; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
+li.completed span { text-decoration: line-through; opacity: 0.6; }
+.delete-btn { margin-left: auto; }
