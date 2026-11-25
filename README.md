@@ -63,4 +63,5 @@ Week 5 To-Do List, refactored to professional quality. It now survives a page re
 ![Shopping Cart](cart-screenshot.png)
 
 ## Live Demo (if deployed)
-[View Live Demo](https://preciousndegwa48.github.io/iyf-s12-week-07-preciousndegwa48/)
+[View Live Demo - To-Do List](https://preciousndegwa48.github.io/iyf-s12-week-07-preciousndegwa48/)
+[View Live Demo - Shopping Cart](https://preciousndegwa48.github.io/iyf-s12-week-07-preciousndegwa48/cart/)
