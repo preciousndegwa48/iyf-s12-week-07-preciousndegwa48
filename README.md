@@ -59,8 +59,8 @@ Week 5 To-Do List, refactored to professional quality. It now survives a page re
 - **Nobody turned up?** Yes. My partner puritywanjiku89 did not do the work.
 
 ## Screenshots (optional)
-![To-Do List](screenshot.png)
-![Shopping Cart](cart-screenshot.png)
+![To-Do List](Screenshot_20261125-135702.png)
+![Shopping Cart](Screenshot_20261125-141649.png)
 
 ## Live Demo (if deployed)
 [View Live Demo - To-Do List](https://preciousndegwa48.github.io/iyf-s12-week-07-preciousndegwa48/)
