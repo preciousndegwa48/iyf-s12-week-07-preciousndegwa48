@@ -1,4 +1,4 @@
-# Week 7: To-Do App + Shopping Cart
+# Week 7: To-Do List + Shopping Cart
 
 ## Author
 - **Name:** Precious Ndegwa
@@ -6,44 +6,61 @@
 - **Date:** November 13, 2026
 
 ## Project Description
-A two-part JavaScript project built with Vite, Vitest, ESLint and Prettier. A To-Do app with add / toggle / delete / filter and localStorage persistence, plus a Shopping Cart with add / quantity update / clear / undo and localStorage persistence. All core logic is pure functions in separate modules so it can be unit-tested.
+Week 5 To-Do List, refactored to professional quality. It now survives a page refresh with localStorage, is split into ES Modules, passes ESLint, is formatted with Prettier, and has unit tests with Vitest. Also includes the Lesson 13 Shopping Cart in `cart/` with the same pattern — one state object, actions, save-after-every-change, and undo.
 
 ## Technologies Used
 - HTML5
 - CSS3
 - JavaScript (ES Modules)
-- Vite
-- Vitest
-- ESLint (flat config)
+- localStorage / sessionStorage
+- Node.js 22
+- ESLint 9
 - Prettier
-- GitHub Actions
+- Vitest
 
 ## Features
-- To-Do: add, toggle completed, delete, filter All / Active / Completed
-- To-Do: remaining count, empty-input edge case handled, no mutation of original array
-- To-Do: persists in localStorage after refresh
-- Shopping Cart: add products, change quantity, remove, clear cart
-- Shopping Cart: undo last change with history stack
-- Shopping Cart: total + count update live, persists in localStorage
-- Unit tests for all todo logic (7 tests)
-- Lint + format checks
+- Add, toggle, delete todos
+- Filter: All / Active / Completed — filter preference is saved
+- Todos + completed state persist across refresh
+- Clear Completed
+- Shopping Cart: add, change quantity, remove, total, count, clear, undo
+- Cart survives refresh
+- Daily Challenges: Theme persistence, Recent Searches (last 5), Form Auto-Save
 
 ## How to Run
 1. Clone this repository
-2. Run `npm install`
-3. Run `npm run dev` and open the link shown
+2. Open `index.html` in your browser
    OR
-   Open `index.html` in your browser (for To-Do) / `cart/index.html` (for Cart)
-4. Run tests: `npm test`
-5. Run lint: `npm run lint`
-6. Run format check: `npm run format`
+   Run `npm install` then `npm start`
 
 ## Lessons Learned
-- How to separate pure logic (`js/todo-logic.js`) from DOM code (`js/todo-ui.js`) so logic is easy to test.
-- How `localStorage` + `JSON.stringify / JSON.parse` keeps state after refresh.
-- How to use Vitest to test edge cases like empty input, unknown id, and no-mutation.
-- How ESLint + Prettier keep code consistent in a team project.
+- The array is the truth, the page is a picture of it. Load once from localStorage, save after every change, then re-render.
+- Pure functions are testable anywhere. That is why `todo-logic.js` has no DOM and no localStorage — only `state.js` and `storage.js` touch them.
+- `dataset.id` is a string — I must use `Number(li.dataset.id)` before comparing it with `todo.id`, otherwise toggle and delete silently fail.
+- ES Modules need `type="module"` and the `.js` extension on every import, and they only load from a server, not from `file://`.
+- Prettier rewrites whole files, so I format once and commit it on its own, so my real changes are easy to review in the PR.
+- One state object + actions + save + render is a pattern I can reuse — I used the exact same pattern for the Shopping Cart.
 
 ## Challenges Faced
-- Keeping functions pure and not mutating the original array — solved by using `map`, `filter`, and spread `[...todos]`.
-- Cart undo — solved by pushing a deep copy of the cart to a history stack
+- **CORS error on file://:** Double-clicking `index.html` blocked ES Modules. Fixed by using Live Server instead.
+- **ESLint 9 config:** Old `.eslintrc.json` is ignored in ESLint 9. Fixed by using the new flat `eslint.config.js` with `@eslint/js` + `globals`.
+- **Bad JSON in storage:** If localStorage was edited or corrupted, `JSON.parse` crashed the app. Fixed by wrapping it in try/catch in `storage.js` so it returns the default state instead.
+- **Toggle / delete not working:** `li.dataset.id` was a string but `todo.id` was a number. Fixed with `Number()`.
+- **Working on phone:** I could not run `npm install` on my phone. I created `package-lock.json` and `.gitignore` via GitHub web, then I will run `npm install` on a computer to regenerate the real integrity hashes.
+- **Partner did not submit work:** My partner puritywanjiku89 did not submit a PR for me to review. 
+
+## Collaboration 
+- **Team / partner:** [@puritywanjiku89](https://github.com/puritywanjiku89) — found on the Classroom board
+- **Shared repo** (Weeks 0 and 3): Not applicable for Week 7
+- **PR I opened:** https://github.com/preciousndegwa48/iyf-s12-week-07-preciousndegwa48/pull/1
+- **PR I reviewed:** None — partner did not submit work to review
+- **Review I wrote** : None — partner did not submit work to review
+- **Merge conflict I resolved** (Weeks 0 and 3): Not applicable for Week 7
+- **Nobody turned up?** Yes. My partner puritywanjiku89 did not do the work.
+
+## Screenshots (optional)
+![To-Do List](screenshot.png)
+![Shopping Cart](cart-screenshot.png)
+
+## Live Demo (if deployed)
+[View Live Demo](https://preciousndegwa48.github.io/iyf-s12-week-07-preciousndegwa48/)
